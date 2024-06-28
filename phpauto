@@ -114,7 +114,7 @@ if (isset($OPTION_JSON) && $OPTION_JSON) {
 }
 
 if (isset($OPTION_DUMP) && $OPTION_DUMP) {
-  $phpautogen = PHPAUTO_WORKING_DIR . '/__PHPAUTOGEN__.php';
+  $phpautogen = PHPAUTO_WORKING_DIR . '/__PHPAUTOGENDEV__.php';
   $autoloadFile = PHPAUTO_WORKING_DIR . '/autoload.php';
   if (isset($OPTION_DEV) && $OPTION_DEV) { // Development version
     $phpautogenContent = file_get_contents(__FILE__);
@@ -133,7 +133,7 @@ if (isset($OPTION_DUMP) && $OPTION_DUMP) {
     $autoloadContent .= "spl_autoload_register(function(\$class) use (&\$__classMap__) {\n";
     $autoloadContent .= "  // Dynamically load the class\n";
     $autoloadContent .= "  if (!defined('PHPAUTO_USE_INCLUDE')) define('PHPAUTO_USE_INCLUDE', true);\n";
-    $autoloadContent .= "  if (\$__classMap__ == null) \$__classMap__ = require __DIR__ . '/__PHPAUTOGEN__.php';\n";
+    $autoloadContent .= "  if (\$__classMap__ == null) \$__classMap__ = require __DIR__ . '/__PHPAUTOGENDEV__.php';\n";
     $autoloadContent .= "  // Now __classMap__ is defined from the included file\n";
     $autoloadContent .= "  if (isset(\$__classMap__[\$class])) {\n";
     $autoloadContent .= "    require_once __DIR__ . '/' . \$__classMap__[\$class];\n";
